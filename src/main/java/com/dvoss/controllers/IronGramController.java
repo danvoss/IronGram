@@ -53,17 +53,18 @@ public class IronGramController {
         File dir = new File("public/photos");
         dir.mkdirs();
 
-        File photoFile = File.createTempFile("photo", file.getOriginalFilename(), dir);
-        FileOutputStream fos = new FileOutputStream(photoFile);
-        fos.write(file.getBytes());
+        if (!(file.getContentType().equals("image/jpeg") || file.getContentType().equals("image/png"))) {
+            throw new Exception("Only pictures may be uploaded.");
+        }
+        else {
+            File photoFile = File.createTempFile("photo", file.getOriginalFilename(), dir);
+            FileOutputStream fos = new FileOutputStream(photoFile);
+            fos.write(file.getBytes());
 
-        Photo photo = new Photo(sender, rec, photoFile.getName(), time, isPublic);
-        photos.save(photo);
-
+            Photo photo = new Photo(sender, rec, photoFile.getName(), time, isPublic);
+            photos.save(photo);
+        }
         return "redirect:/";
     }
-
-
-
 }
 
