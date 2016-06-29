@@ -24,7 +24,7 @@ public class Photo {
     String filename;
 
     @Column
-    long time;
+    Long time;
 
     LocalDateTime dt;
 
@@ -34,7 +34,7 @@ public class Photo {
     public Photo() {
     }
 
-    public Photo(User sender, User recipient, String filename, long time, boolean isPublic) {
+    public Photo(User sender, User recipient, String filename, Long time, boolean isPublic) {
         this.sender = sender;
         this.recipient = recipient;
         this.filename = filename;
@@ -74,11 +74,11 @@ public class Photo {
         this.filename = filename;
     }
 
-    public long getTime() {
+    public Long getTime() {
         return time;
     }
 
-    public void setTime(int time) {
+    public void setTime(Long time) {
         this.time = time;
     }
 
