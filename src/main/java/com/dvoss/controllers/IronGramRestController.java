@@ -69,11 +69,10 @@ public class IronGramRestController {
         return photos.findByRecipient(user);
     }
 
-    // not entirely clear on assignment instructions here (?):
+    // this route is faulty:
     @RequestMapping(path = "/public-photos", method = RequestMethod.GET)
     public Iterable<Photo> getPublicPhotos(String username) {
         User user = users.findFirstByName(username);
-        List<Photo> photoList = photos.findByIsPublicTrue(user);
-        return photoList;
+        return photos.findByIsPublicTrue(user);
     }
 }

@@ -53,7 +53,7 @@ public class IronGramController {
         File dir = new File("public/photos");
         dir.mkdirs();
 
-        if (!(file.getContentType().equals("image/jpeg") || file.getContentType().equals("image/png"))) {
+        if (!(file.getContentType().startsWith("image"))) {
             throw new Exception("Only pictures may be uploaded.");
         }
         else {
