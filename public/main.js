@@ -32,5 +32,29 @@ function login() {
     });
 }
 
-$("#loggedIn").hide();
+function logout() {
+    $.ajax({
+        "type": "POST",
+        "url": "/logout",
+        "success": function() {
+            $("#notLoggedIn").show();
+            $("#loggedIn").hide();
+        }
+    });
+}
+
+$.ajax({
+    "type": "GET",
+    "url": "/user",
+    "success": function(data) {
+        if (data) {
+            $("#notLoggedIn").hide();
+            getPhotos();
+         }
+         else {
+            $("#loggedIn").hide();
+         }
+    }
+});
+
 setInterval(getPhotos, 1000);

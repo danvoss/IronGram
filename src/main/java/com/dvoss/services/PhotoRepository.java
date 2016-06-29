@@ -11,5 +11,5 @@ import java.util.List;
  */
 public interface PhotoRepository extends CrudRepository<Photo, Integer> {
     public Iterable<Photo> findByRecipient(User recipient);
-    List<Photo> findByIsPublicTrue(User sender);
+    public Iterable<Photo> findByIsPublicTrueAndSender(User sender);
 }
