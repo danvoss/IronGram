@@ -70,7 +70,6 @@ public class IronGramRestController {
     }
 
     // not entirely clear on assignment instructions here (?):
-
     @RequestMapping(path = "/public-photos", method = RequestMethod.GET)
     public Iterable<Photo> getPublicPhotos(String username) {
         User user = users.findFirstByName(username);
