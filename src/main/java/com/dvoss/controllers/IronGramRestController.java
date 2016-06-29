@@ -69,13 +69,11 @@ public class IronGramRestController {
         return photos.findByRecipient(user);
     }
 
+    // not entirely clear on assignment instructions here (?):
 
-
-//    @RequestMapping(path = "/public-photos", method = RequestMethod.GET)
-//    public Iterable<Photo> getPublicPhotos(String username) {
-//
-//        // need custom query - select p from photo where (public true, inner join user/username)
-//
-//        return photos
-//    }
+    @RequestMapping(path = "/public-photos", method = RequestMethod.GET)
+    public Iterable<Photo> getPublicPhotos(String username) {
+        User user = users.findFirstByName(username);
+        return photos.findByIsPublicTrue(user);
+    }
 }
